@@ -85,6 +85,7 @@ frame.place(x=10, y=25)
 
 texto = ctk.CTkEntry(janela, width=120, height=5)
 texto.place(x=360, y=25)
+texto.bind('<Return>', lambda event:adicionar())
 
 add = ctk.CTkButton(janela, width=100, command=adicionar, text="Add Task", corner_radius=15)
 add.place(x=370, y=75)

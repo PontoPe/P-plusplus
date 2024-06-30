@@ -15,18 +15,19 @@ class TodoListApp:
 
         self.task_entry = ctk.CTkEntry(root, width=120, height=5)
         self.task_entry.place(x=360, y=25)
+        self.task_entry.bind('Return', lambda event:self.add_task)
 
-        add_button = ctk.CTkButton(root, width=100, command=self.add_task, text="Add Task", corner_radius=15)  # Set button colors
+        add_button = ctk.CTkButton(root, width=100, command=self.add_task, text="Add Task", corner_radius=15)   
         add_button.place(x=370, y=75)
 
-        self.frame = ctk.CTkFrame(root, width=335, height=230)
-        self.frame.place(x=10, y=25)
+        self.task_listbox = ctk.CTkFrame(root, width=335, height=230)
+        self.task_listbox.place(x=10, y=25)
 
-        remove_button = ctk.CTkButton(root, text="Remove Task", command=self.remove_task, font=('Arial', 12), bg="#e74c3c", fg="#ecf0f1")  # Set button colors
-        remove_button.grid(row=2, column=0, padx=10, pady=10, sticky="ew")
+        remove_button = ctk.CTkButton(root, width=100, command=self.remove_task, text="Delete Task", corner_radius=15)
+        remove_button.place(x=370, y=125)
 
-        complete_button = ctk.CTkButton(root, text="Complete Task", command=self.complete_task, font=('Arial', 12), bg="#f39c12", fg="#ecf0f1")  # Set button colors
-        complete_button.grid(row=2, column=1, padx=10, pady=10, sticky="ew")
+        #complete_button = ctk.CTkButton(root, text="Complete Task", command=self.complete_task, font=('Arial', 12), bg="#f39c12", fg="#ecf0f1")  # Set button colors
+        #complete_button.grid(row=2, column=1, padx=10, pady=10, sticky="ew")
 
         self.task_listbox.bind('<Double-Button-1>', lambda event: self.complete_task())
 
@@ -60,5 +61,6 @@ class TodoListApp:
 
 if __name__ == "__main__":
     root = ctk.CTk()
+    root.geometry("500x300")
     app = TodoListApp(root)
     root.mainloop()
