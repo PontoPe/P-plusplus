@@ -45,6 +45,7 @@ def apague():
         tasks_dict[key].place(x=15, y=(10+30*curListLen))
         curListLen += 1
 
+        texto.delete(0, END)
 
 def salvar():
     global tasks
