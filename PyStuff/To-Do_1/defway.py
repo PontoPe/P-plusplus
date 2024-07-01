@@ -26,26 +26,29 @@ def adicionar():
 
 
 def apague():
+    text_entry = texto.get()
+    #destroi tudo
     for widget in frame.winfo_children():
         widget.destroy()
-
-    
+    if text_entry:
+        tasks.remove(text_entry)
+    #tira da lista tudo o que tiver on ou escrito 
     for item in tasks:
-        if var_dict[item].get() == "on" or item == texto.get():
+        if var_dict[item].get() == "on":
             tasks.remove(item)
     
-
+    #reseta count e dicionario
     curListLen = 0
-
     tasks_dict = {}
-
 
     for key in tasks:
         tasks_dict[key] = ctk.CTkCheckBox(frame, text = f"{key}", variable=var_dict[key], onvalue="on", offvalue="off")
         tasks_dict[key].place(x=15, y=(10+30*curListLen))
         curListLen += 1
+    
+    #apaga entrada de texto
+    texto.delete(0, END)
 
-        texto.delete(0, END)
 
 def salvar():
     global tasks
