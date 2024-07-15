@@ -7,3 +7,9 @@
 
 
 // oi meu rei
+//
+// void addTask
+// void delTask
+// void UpdateTask
+// void ViewTasks
+// void main
