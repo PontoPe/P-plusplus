@@ -3,3 +3,7 @@
 #include <fstream>
 #include <string>
 #include <cstdlib>
+
+
+
+// oi meu rei
