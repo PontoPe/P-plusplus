@@ -24,7 +24,7 @@ def adicionar():
 
     
 
-
+# funcao para apagar
 def apague():
     text_entry = texto.get()
     #destroi tudo
