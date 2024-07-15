@@ -1,4 +1,5 @@
 #include <iostream>
+#include <filesystem>
 #include <fstream>
 #include<string>
 #include <cstdlib>
@@ -64,14 +65,18 @@ void readData() {
     todo todo;
     ifstream read;
     read.open("todo.txt");
-    cout << "\n\t------------------Your current Tasks in the list--------------------";
-    // while we dont reach the end of file keep on printing the data on screen
-    while (!read.eof()) {
-        read >> todo.id;
-        read.ignore();
-        getline(read, todo.task);
-        print(todo);
-    }
+    if (filesystem::file_size("todo.txt") == 0) {
+        cout << "\n\t------------------No tasks available--------------------";
+        return;
+    } else{
+        // while we dont reach the end of file keep on printing the data on screen
+        cout << "\n\t------------------Your current Tasks in the list--------------------";
+        while (!read.eof()) {
+            read >> todo.id;
+            read.ignore();
+            getline(read, todo.task);
+            print(todo);
+        }}
     read.close();
 }
 
@@ -97,6 +102,7 @@ int searchData() {
             return id;
         }
     }
+    return 0;
 }
 
 // this method is used to delete the task from the todo.txt file
@@ -204,11 +210,11 @@ int main()
 
     while (true) {
         cout<<endl<<endl;
-        cout << "\n\t1.Add student data";
-        cout << "\n\t2.See student data";
-        cout << "\n\t3.Search student data";
-        cout << "\n\t4.Delete student data";
-        cout << "\n\t5.Update student data";
+        cout << "\n\t1.Add task";
+        cout << "\n\t2.See all tasks";
+        cout << "\n\t3.Search task";
+        cout << "\n\t4.Delete task";
+        cout << "\n\t5.Update task";
 
         int choice;
         cout << "\n\tEnter choice : ";
